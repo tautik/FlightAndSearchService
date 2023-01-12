@@ -1,7 +1,7 @@
 const { City } = require("../models/index");
 
 class CityRepository {
-  async creteCity({ name }) {
+  async createCity({ name }) {
     //we will get {name:___,},destructuring to directly access name key
     try {
       const city = await City.create(name);
