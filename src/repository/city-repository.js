@@ -4,11 +4,13 @@ class CityRepository {
   async createCity({ name }) {
     //we will get {name:___,},destructuring to directly access name key
     try {
-      const city = await City.create(name);
+      const city = await City.create({
+        name,
+      });
       return city;
-    } catch (err) {
+    } catch (error) {
       console.log("Something went wrong in the repository layer");
-      throw { err };
+      throw { error };
     }
   }
 
@@ -21,26 +23,24 @@ class CityRepository {
         },
       });
       return true;
-    } catch (err) {
+    } catch (error) {
       console.log("Something went wrong in the repository layer");
-      throw { err };
+      throw { error };
     }
   }
 
   async updateCity(cityId, data) {
-    // id to be deleted and {data to be updated}
+    // {name: "Prayagraj"}
     try {
-      await City.update(
-        { data },
-        {
-          where: {
-            id: cityId,
-          },
-        }
-      );
-    } catch (err) {
+      const city = await City.update(data, {
+        where: {
+          id: cityId,
+        },
+      });
+      return city;
+    } catch (error) {
       console.log("Something went wrong in the repository layer");
-      throw { err };
+      throw { error };
     }
   }
 
@@ -48,9 +48,9 @@ class CityRepository {
     try {
       const city = await City.findByPk(cityId); //returns object if found else null
       return city;
-    } catch (err) {
+    } catch (error) {
       console.log("Something went wrong in the repository layer");
-      throw { err };
+      throw { error };
     }
   }
 }
