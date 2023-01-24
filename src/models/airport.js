@@ -1,8 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
-const { FOREIGNKEYS } = require("sequelize/types/query-types");
 module.exports = (sequelize, DataTypes) => {
-  class City extends Model {
+  class Airport extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -10,23 +9,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(mdoels.Airports, {
+      this.belongsTo(models.City, {
         foreignKey: "cityId",
+        onDelete: "CASCADE", //if you delete a city, all airport that belongs
+        //to that city will also get deleted.
       });
     }
   }
-  City.init(
+  Airport.init(
     {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+      },
+      address: DataTypes.STRING,
+      cityId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "City",
+      modelName: "Airport",
     }
   );
-  return City;
+  return Airport;
 };
