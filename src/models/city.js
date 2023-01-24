@@ -1,6 +1,5 @@
 "use strict";
 const { Model } = require("sequelize");
-const { FOREIGNKEYS } = require("sequelize/types/query-types");
 module.exports = (sequelize, DataTypes) => {
   class City extends Model {
     /**
@@ -10,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(mdoels.Airports, {
+      this.hasMany(models.Airport, {
         foreignKey: "cityId",
       });
     }
