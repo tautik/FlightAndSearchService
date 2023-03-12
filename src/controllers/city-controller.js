@@ -1,5 +1,5 @@
 //we will put all the controllers here (controller==last middlewear)
-const { CityService } = require("../service/index");
+const { CityService } = require("../services/index");
 
 //since CityService is a Class, we will make an object of it and use it
 const cityService = new CityService();
