@@ -1,4 +1,5 @@
 const { Flights } = require("../models/index");
+const { Op } = require("sequelize");
 
 class FlightRepository {
   #createFilter(data) {
@@ -42,6 +43,7 @@ class FlightRepository {
       throw { error };
     }
   }
+
   async getFlight(flightId) {
     try {
       const flight = await Flights.findByPk(flightId);
@@ -64,6 +66,7 @@ class FlightRepository {
       throw { error };
     }
   }
+
   async updateFlights(flightId, data) {
     try {
       await Flights.update(data, {
@@ -80,3 +83,8 @@ class FlightRepository {
 }
 
 module.exports = FlightRepository;
+/*
+{
+    where: {}
+}
+*/
