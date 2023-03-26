@@ -115,9 +115,11 @@ To run this project, you will need to add the following environment variables to
 
 ### Flights ->id, flightNumber, airplaneId, departureAirportId , arrivalAirportId, arrivalTime, departureTime, price, boardingGate, createdAt, updatedAt, totalSeats
 
-````
+```
 
     Relationship -> City has many airports and Airport belongs to a city (one to many)
+
+```
 
 ```
 npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
@@ -129,4 +131,3 @@ npx sequelize model:generate --name Airport --attributes name:String,address:Str
 [API_Gateway](https://github.com/tautik/API_Gateway)
 [Auth_Service](https://github.com/tautik/Auth_Service)
 [ReminderService](https://github.com/tautik/ReminderService)
-````
